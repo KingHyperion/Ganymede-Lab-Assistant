@@ -1,7 +1,7 @@
 from nicegui import ui
 import ollama
 
-from inventory import inventory, projects, available_tags, available_units
+from inventory import projects
 
 def format_quantity(item): # Helper, grammatically formats inventory item as per unit
     u = item.get("unit")
