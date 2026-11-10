@@ -19,7 +19,7 @@ with ui.tab_panels(tabs, value=inv_tab).classes('w-full p-6 bg-gray-900 text-whi
     with ui.tab_panel(inv_tab): # Tab 1: Inventory
         ui.label('Workshop Inventory & Resources').classes('text-2xl font-bold mb-4')
 
-        search_query = ui.input(placeholder='Search by name, category, or tags...').classes('bg-gray-800 text-white w-full mb-4')
+        search_query = ui.input(placeholder='Search by name, category, bin, project, or tags...').props('dark input-class="text-white"').classes('w-full mb-4')
 
         table_rows = []
         for item in inventory:
