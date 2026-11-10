@@ -1,5 +1,5 @@
 available_tags = ["rp2040", "rp2350", "wireless", "soldered", "pla", "bambu", "jumper-wires", "cleaning"]
-available_units = ["count", "spools", "containers"]
+available_units = ["count", "spools", "bottles"]
 
 inventory = [
     {
@@ -21,8 +21,8 @@ inventory = [
     {
         "name": "Isopropyl Alcohol 99% (500ml bottle)",
         "category": "Chemicals & Liquids",
-        "unit": "containers",
-        "containers": [500, 250],  
+        "unit": "bottles",
+        "bottles": [500, 250],  
         "tags": ["cleaning"],
         "bin": "Chemical Shelf"
     },
