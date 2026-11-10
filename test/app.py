@@ -21,7 +21,6 @@ with ui.tab_panels(tabs, value=inv_tab).classes('w-full p-6 bg-gray-900 text-whi
 
         search_query = ui.input(placeholder='Search by name, category, or tags...').classes('bg-gray-800 text-white w-full mb-4')
 
-        # Prepare rows with pre-formatted strings so the table reads them safely
         table_rows = []
         for item in inventory:
             r = item.copy()
@@ -55,5 +54,25 @@ with ui.tab_panels(tabs, value=inv_tab).classes('w-full p-6 bg-gray-900 text-whi
             inv_table.update()
 
         search_query.on('update:model-value', filter_table)
+
+    with ui.tab_panel(proj_tab): # Tab 2: Project Hub
+        ui.label('Project Hub & Hackatime Stats').classes('text-2xl font-bold mb-4')
+        with ui.row().classes('gap-4'):
+            for p in projects:
+                with ui.card().classes('bg-gray-800 p-5 w-96 text-white'):
+                    ui.label(p['name']).classes('text-xl font-bold text-purple-400')
+                    ui.separator().classes('my-2')
+                    ui.label(f"Category: {p['category']}").classes('text-sm text-gray-300')
+                    ui.label(f"Status: {p['status']}").classes('text-sm text-gray-300')
+
+                    ui.label("Required Supplies:").classes('text-sm font-bold text-purple-300 mt-3')
+                    with ui.column().classes('pl-2 gap-1'):
+                        for supply in p.get('supplies', []):
+                            ui.label(f"- {supply}").classes('text-xs text-gray-300')
+
+                    with ui.row().classes('mt-4 bg-gray-900 p-2 rounded items-center gap-2'):
+                        ui.icon('code', color='purple')
+                        ui.label(p['hackatime_stats']).classes('text-xs text-purple-300 font-mono')
+
 
 ui.run(port=8080, reload=True)
