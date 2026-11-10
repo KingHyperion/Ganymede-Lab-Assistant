@@ -74,5 +74,14 @@ with ui.tab_panels(tabs, value=inv_tab).classes('w-full p-6 bg-gray-900 text-whi
                         ui.icon('code', color='purple')
                         ui.label(p['hackatime_stats']).classes('text-xs text-purple-300 font-mono')
 
+    with ui.tab_panel(ai_tab): # Tab 2: Ollama Chat
+        ui.label('Local AI Lab Assistant (Qwen 3.5)').classes('text-2xl font-bold mb-2')
+        ui.label('Asl questions about code, wiring, or your project inventory.').classes('text-sm text-gray-400 mb-4')
+
+        chat_container = ui.scroll_area().classes('w-full h-96 bg-gray-800 p-4 rounded mb-4')
+
+        with ui.row().classes('w-full'):
+            msg_input = ui.input(placeholder='e.g., How do I read pins on the Pi Pico 2 using MicroPython?').props('dark input-class="text-white"').classes('flex-grow bg-gray-800 text-white')
+            ui.button('Send', on_click=lambda: handle_ollama_chat(msg_input, chat_container, msg_input)).classes('bg-purple-600 text-white')
 
 ui.run(port=8080, reload=True)
