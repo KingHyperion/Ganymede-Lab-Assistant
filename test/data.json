@@ -1,4 +1,9 @@
 {
+  "units": [
+    { "name": "count", "measure": "units", "individual": false },
+    { "name": "spools", "measure": "g", "individual": true },
+    { "name": "bottles", "measure": "mL", "individual": true }
+  ],
   "inventory": [
     {
       "id": "a1b2c2d4",
