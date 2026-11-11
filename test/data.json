@@ -1,0 +1,51 @@
+{
+  "inventory": [
+    {
+      "id": "a1b2c2d4",
+      "name": "Pi Pico 2 (RP2350) - Wireless - Pre-soldered",
+      "category": "Microcontrollers",
+      "unit": "count",
+      "stock": [4],
+      "tags": ["rp2350", "wireless", "soldered"],
+      "bin": "Pico Kit"
+    },
+    {
+      "id": "e5f6a7b8",
+      "name": "PLA Filament - Bambu Labs - Sparkle Black",
+      "category": "Filament",
+      "unit": "spools",
+      "stock": [1000, 243],
+      "tags": ["pla", "bambu"],
+      "bin": "Filament Box"
+    },
+    {
+      "id": "c9d0e1f2",
+      "name": "Isopropyl Alcohol 99% (500ml bottle)",
+      "category": "Chemicals & Liquids",
+      "unit": "bottles",
+      "stock": [500, 250],
+      "tags": ["cleaning"],
+      "bin": "Chemical Shelf"
+    },
+    {
+      "id": "13a4b5c6",
+      "name": "22awg Breadboard Jumper Wires",
+      "category": "Wires",
+      "unit": "count",
+      "stock": [6],
+      "tags": ["jumper-wires"],
+      "bin": "Wire Box"
+    }
+  ],
+  "Projects": [
+    {
+      "id": "d7e8f9a0",
+      "name": "AI Spotlight",
+      "category": "Hardware",
+      "status": "In Progress",
+      "supplies": ["a1b2c3d4", "13a4b5c6"],
+      "tags": ["rp2350", "wireless", "soldered"],
+      "hackatime_stats": ""
+    }
+  ]
+}
