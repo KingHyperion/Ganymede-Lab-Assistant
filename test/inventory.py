@@ -1,50 +1,29 @@
+import json
+import os
+
+data_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data.json")
+
 available_tags = ["rp2040", "rp2350", "wireless", "soldered", "pla", "bambu", "jumper-wires", "cleaning"]
 available_units = ["count", "spools", "bottles"]
 
-inventory = [
-    {
-        "name": "Pi Pico 2 (RP2350) - Wireless - Pre-soldered",
-        "category": "Microcontrollers",
-        "unit": "count",
-        "qty": 4,
-        "tags": ["rp2350", "wireless", "soldered"],
-        "bin": "Pico Kit"
-    },
-    {
-        "name": "PLA Filament - Bambu Labs - Matte Blue",
-        "category": "Filament",
-        "unit": "spools",
-        "spools": [1000, 243],  
-        "tags": ["pla", "bambu"],
-        "bin": "Filament Box"
-    },
-    {
-        "name": "Isopropyl Alcohol 99% (500ml bottle)",
-        "category": "Chemicals & Liquids",
-        "unit": "bottles",
-        "bottles": [500, 250],  
-        "tags": ["cleaning"],
-        "bin": "Chemical Shelf"
-    },
-    {
-        "name": "22awg Breadboard Jumper Wires",
-        "category": "Wires",
-        "unit": "count",
-        "qty": 6,
-        "tags": ["jumper-wires"],
-        "bin": "Wire Box"
-    },
-]
+inventory = []
+projects = []
 
-projects = [
-    {
-        "name": "AI Spotlight", 
-        "category": "Hardware", 
-        "status": "In Progress", 
-        "supplies": [
-            "Pi Pico 2 (RP2350) - Wireless - Pre-soldered",
-            "22awg Breadboard Jumper Wires"
-        ],
-        "hackatime_stats": "4h 15m coded today (MicroPython)"
-    }
-]
+def load_data(path=data_file):
+    if not os.path.exists(path):
+        return
+    with open(path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    inventory.clear()
+    inventory.extend(data.get("inventory", []))
+    projects.clear()
+    projects.extend(data.get("projects", []))
+
+def save_data(path=data_file):
+    data = {"inventory": inventory, "projects": projects}
+    temp_path = path + ".tmp"
+    with open(temp_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2)
+    os.replace(temp_path, path)
+
+load_data()
