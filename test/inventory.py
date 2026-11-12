@@ -5,6 +5,9 @@ data_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data.json"
 
 available_tags = ["rp2040", "rp2350", "wireless", "soldered", "pla", "bambu", "jumper-wires", "cleaning"]
 
+project_statuses = ["Planning", "In Progress", "Completed"]
+project_categories = ["Hardware", "Software"]
+
 units = []
 inventory = []
 projects = []

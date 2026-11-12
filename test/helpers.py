@@ -1,5 +1,5 @@
 import uuid
-from inventory import inventory, projects, units, available_tags, save_data
+from inventory import inventory, projects, units, available_tags, project_categories, save_data
 
 def new_id():
     return uuid.uuid4().hex[:8]
@@ -31,7 +31,7 @@ def get_item_name(item_id):
     for item in inventory:
         if item['id'] == item_id:
             return item['name']
-    return "Unownk item"
+    return "Unknown item"
 
 def get_all_tags():
     tags = set(available_tags)
@@ -65,3 +65,27 @@ def add_new_inventory_item(name, category, qty, unit, bin_loc, tags):
     inventory.append(new_item)
     save_data()
     return new_item
+
+def get_supply_options():
+    return {item['id']: item['name'] for item in inventory}
+
+def get_project_categories():
+    cats = list(project_categories)
+    for p in projects:
+        if p.get('category') and p['category'] not in cats:
+            cats.append(p['category'])
+    return cats
+
+def add_new_project(name, category, status, supplies, tags):
+    new_project = {
+        "id": new_id(),
+        "name": name,
+        "category": category,
+        "status": status,
+        "supplies": list(supplies),
+        "tags": list(tags),
+        "hackatime_project": ""
+    }
+    projects.append(new_project)
+    save_data()
+    return new_project
