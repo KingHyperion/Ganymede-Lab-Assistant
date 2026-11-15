@@ -1,17 +1,18 @@
 {
-  "units": [
-    { "name": "count", "measure": "units", "individual": false },
-    { "name": "spools", "measure": "g", "individual": true },
-    { "name": "bottles", "measure": "mL", "individual": true }
-  ],
   "inventory": [
     {
       "id": "a1b2c2d4",
       "name": "Pi Pico 2 (RP2350) - Wireless - Pre-soldered",
       "category": "Microcontrollers",
       "unit": "count",
-      "stock": [4],
-      "tags": ["rp2350", "wireless", "soldered"],
+      "stock": [
+        4
+      ],
+      "tags": [
+        "rp2350",
+        "wireless",
+        "soldered"
+      ],
       "bin": "Pico Kit"
     },
     {
@@ -19,8 +20,14 @@
       "name": "PLA Filament - Bambu Labs - Sparkle Black",
       "category": "Filament",
       "unit": "spools",
-      "stock": [1000, 243],
-      "tags": ["pla", "bambu"],
+      "stock": [
+        1000,
+        243
+      ],
+      "tags": [
+        "pla",
+        "bambu"
+      ],
       "bin": "Filament Box"
     },
     {
@@ -28,8 +35,13 @@
       "name": "Isopropyl Alcohol 99% (500ml bottle)",
       "category": "Chemicals & Liquids",
       "unit": "bottles",
-      "stock": [500, 250],
-      "tags": ["cleaning"],
+      "stock": [
+        500,
+        250
+      ],
+      "tags": [
+        "cleaning"
+      ],
       "bin": "Chemical Shelf"
     },
     {
@@ -37,20 +49,57 @@
       "name": "22awg Breadboard Jumper Wires",
       "category": "Wires",
       "unit": "count",
-      "stock": [6],
-      "tags": ["jumper-wires"],
+      "stock": [
+        6
+      ],
+      "tags": [
+        "jumper-wires"
+      ],
       "bin": "Wire Box"
+    },
+    {
+      "id": "dd8493ac",
+      "name": "Pi Pico (RP2040) - Pre-soldered",
+      "category": "Microcontrollers",
+      "unit": null,
+      "stock": [
+        2
+      ],
+      "tags": [
+        "rp2040",
+        "soldered"
+      ],
+      "bin": "Pico Kit"
+    },
+    {
+      "id": "c7b5ffb2",
+      "name": "SG90 Servo",
+      "category": "Servos",
+      "unit": null,
+      "stock": [
+        2
+      ],
+      "tags": [
+        "Servo"
+      ],
+      "bin": "Elegoo Kit"
     }
   ],
-  "Projects": [
+  "projects": [
     {
-      "id": "d7e8f9a0",
+      "id": "c97b622b",
       "name": "AI Spotlight",
       "category": "Hardware",
       "status": "In Progress",
-      "supplies": ["a1b2c3d4", "13a4b5c6"],
-      "tags": ["rp2350", "wireless", "soldered"],
-      "hackatime_stats": ""
+      "supplies": [
+        "dd8493ac",
+        "13a4b5c6",
+        "e5f6a7b8"
+      ],
+      "tags": [
+        "AI"
+      ],
+      "hackatime_project": ""
     }
   ]
 }
