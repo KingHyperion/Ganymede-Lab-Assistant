@@ -1,6 +1,6 @@
 from nicegui import ui
 from inventory import inventory, units
-from helpers import format_quantity, get_projects_using_item, add_new_inventory_item, get_all_tags, get_unit, add_new_unit
+from helpers import format_quantity, get_projects_using_item, add_new_inventory_item, get_all_tags, get_unit, add_new_unit, get_item_categories, get_item_bins
 
 def render_inventory_tab():
     ui.label('Workshop Inventory & Resources').classes('text-2xl font-bold mb-4')
@@ -57,7 +57,13 @@ def render_inventory_tab():
         ui.label('Add New Inventory Item').classes('text-xl font-bold text-purple-300 mb-4')
 
         name_input = ui.input(label='Item Description / Name').props('dark').classes('w-full mb-2')
-        cat_input = ui.input(label='Category').props('dark').classes('w-full mb-2')
+        cat_input = ui.select(
+            label='Category (type a new one and press Enter)',
+            options=get_item_categories(),
+            new_value_mode='add-unique',
+            with_input=True,
+            value=None
+        ).props('dark').classes('w-full mb-2')
 
         with ui.row().classes('w-full items-center gap-2 mb-2'):
             qty_input = ui.number(label='Quantity', value=1).props('dark').classes('flex-grow')
@@ -72,7 +78,14 @@ def render_inventory_tab():
         unit_input.on_value_change(update_qty_label)
         update_qty_label()
 
-        bin_input = ui.input(label='Storage Bin').props('dark').classes('w-full mb-2')
+        bin_input = ui.select(
+            label='Storage Bin (type a new one and press Enter)',
+            options=get_item_bins(),
+            new_value_mode='add-unique',
+            with_input=True,
+            value=None
+        ).props('dark').classes('w-full mb-2')
+        
         tags_input = ui.select(
             label='Tags (type a new one and press Enter)',
             options=get_all_tags(),
@@ -99,9 +112,9 @@ def render_inventory_tab():
             add_dialog.close()
 
             name_input.value = ''
-            cat_input.value =''
+            cat_input.set_options(get_item_categories(), value=None)
             qty_input.value = 1
-            bin_input.value = ''
+            bin_input.set_options(get_item_bins(), value=None)
             tags_input.set_options(get_all_tags(), value=[])
 
         with ui.row().classes('w-full justify-end gap-2 mt-4'):
@@ -116,7 +129,7 @@ def render_inventory_tab():
         new_unit_individual = ui.checkbox('Track each entry separately (like spools or bottles)').classes('mb-4')
 
         def save_new_unit():
-            name = (new_unit_name.vlaue or '').strip()
+            name = (new_unit_name.value or '').strip()
             if not name:
                 ui.notify('Unit name is required!', color='negative')
                 return

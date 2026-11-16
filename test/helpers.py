@@ -56,7 +56,7 @@ def add_new_inventory_item(name, category, qty, unit, bin_loc, tags):
     new_item = {
         "id": new_id(),
         "name": name,
-        "category": category,
+        "category": category or "",
         "unit": unit,
         "stock": [qty],
         "tags": list(tags),
@@ -89,3 +89,17 @@ def add_new_project(name, category, status, supplies, tags):
     projects.append(new_project)
     save_data()
     return new_project
+
+def get_item_categories():
+    cats = []
+    for item in inventory:
+        if item.get('category') and item['category'] not in cats:
+            cats.append(item['category'])
+    return sorted(cats)
+
+def get_item_bins():
+    bins = []
+    for item in inventory:
+        if item.get('bin') and item['bin'] not in bins:
+            bins.append(item['bin'])
+    return sorted(bins)

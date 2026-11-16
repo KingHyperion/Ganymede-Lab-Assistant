@@ -83,6 +83,34 @@
         "Servo"
       ],
       "bin": "Elegoo Kit"
+    },
+    {
+      "id": "d8319ea1",
+      "name": "Dowell Wire Strippers (10-22 AWG)",
+      "category": "Tools",
+      "unit": null,
+      "stock": [
+        1
+      ],
+      "tags": [
+        "Tool",
+        "Electrical"
+      ],
+      "bin": "Mini Table Drawer"
+    },
+    {
+      "id": "66d335d6",
+      "name": "Dowell Wire Strippers (22-30 AWG)",
+      "category": "Tools",
+      "unit": null,
+      "stock": [
+        1
+      ],
+      "tags": [
+        "Tool",
+        "Electrical"
+      ],
+      "bin": "Mini Table Drawer"
     }
   ],
   "projects": [
