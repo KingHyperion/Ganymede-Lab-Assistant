@@ -154,3 +154,17 @@ def delete_project(project_id):
 def refresh_all(refreshers):
     for refresh in refreshers:
         refresh()
+
+def add_new_project(name, category, status, supplies, tags):
+    new_project = {
+        "id": new_id(),
+        "name": name,
+        "category": category,
+        "status": status,
+        "supplies": list(supplies),
+        "tags": list(tags),
+        "hackatime_project": ""
+    }
+    projects.append(new_project)
+    save_data()
+    return new_project

@@ -17,13 +17,15 @@ def load_data(path=data_file):
         return
     with open(path, "r", encoding="utf-8") as f:
         data = json.load(f)
+    units.clear()
+    units.extend(data.get("units", []))
     inventory.clear()
     inventory.extend(data.get("inventory", []))
     projects.clear()
     projects.extend(data.get("projects", []))
 
 def save_data(path=data_file):
-    data = {"inventory": inventory, "projects": projects}
+    data = {"units": units, "inventory": inventory, "projects": projects}
     temp_path = path + ".tmp"
     with open(temp_path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
